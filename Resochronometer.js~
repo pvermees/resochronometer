@@ -128,11 +128,11 @@ function getdfdK(meas,i){
 }
 
 function getdfdHe(meas,i,K){
- return(K/meas.Vol(i));
+ return(-K/meas.Vol(i));
 }
 
 function getd2fdHedK(meas,i){
- return(1/meas.Vol(i));
+ return(-1/meas.Vol(i));
 }
 
 function getdfdV(meas,i,K){
@@ -222,7 +222,7 @@ function STDs(measurements){
   return(out);
  }
 
- // d-th derivative of the log-likelihood function
+ // d-th derivative of the log-likelihood function with respect to K
  this.getdL = function(K,d){
   var n = this.meas.data.length, 
       out = 0, t, thati, si, shati2, 

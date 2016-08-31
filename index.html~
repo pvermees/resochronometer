@@ -45,8 +45,6 @@ var SMPdata = [
 ["RB140-7",278.1,2.95,128.8,1.45,2.47,0.19,0.122,0.00012,1466,29,,]
 ];
 
-$("#vermeesch").click();
-
 $("#SMPs").handsontable({
   data: SMPdata,
   minRows: 50,
@@ -75,7 +73,9 @@ $("#HELIOTABLE").handsontable({
 $("#run").button().click(function( event ) {
  mySMPs = new SMPs(new Measurements($("#SMPs")));
  mySMPs.meas.load();
+ ppm = $("#ppm").prop("checked");
  if (boyce) {
+  ncc = $("#ncc").prop("checked");
   rho = $("#rho").val();
   myK = 1;
   mysK = 0;
@@ -97,22 +97,23 @@ $("#clear").button().click(function( event ) {
 });
 
 $("#tohelioplot").button().click(function( event ) {
-  $('#HELIOPLOT').css('visibility','visible');
-  toHelioplot($('#HELIOTABLE'),mySMPs,myK,mysK);
+ $('#HELIOPLOT').css('visibility','visible');
+ toHelioplot($('#HELIOTABLE'),mySMPs,myK,mysK);
 });
 
 $("#hide").button().click(function( event ) {
-  $('#HELIOPLOT').css('visibility','hidden');
+ $('#HELIOPLOT').css('visibility','hidden');
 });
 
 $("#help").button().click(function( event ) {
-   window.location = "help.html";
+ window.location = "help.html";
 });
 
 $("#boyce").click(function(){
  boyce = true;
  $("#content-container").html('<div class="box" id="He"> &nbsp; He in  <input type="radio" name="nccnmol" id="ncc"> ncc <input type="radio" name="nccnmol" id="nmol"> nmol &nbsp;</div><div class="box" id="voldens">&nbsp; vol in &mu;m<sup>3</sup>, &rho; = <input type="text" id="rho" style="width:50px;"> g/cm<sup>3</sup> &nbsp;</div></div><p></p>');
  $("#ncc").prop("checked", ncc);
+ $("#nmol").prop("checked", !ncc);
  $("#rho").prop("value", rho);
 });
 
@@ -133,21 +134,7 @@ $("#vermeesch").click(function(){
  });
 });
 
-$("#ppm").click(function(){
- ppm = true; 
-});
-
-$("#nmolmg").click(function(){
- ppm = false; 
-});
-
-$("#ncc").click(function(){
- ncc = true; 
-});
-
-$("#nmol").click(function(){ 
- ncc = false; 
-});
+$("#vermeesch").click();
 
 });
 
