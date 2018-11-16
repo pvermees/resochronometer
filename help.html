@@ -1,13 +1,80 @@
-You can run the calculator offline by downloading the following files
-in a single directory and opening <tt>index.html</tt> in your browser:
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Resochronometer Help</title>
+    <style>
+      body {
+      width: 800;
+      margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height:50px;"></div>
+    Currently there are two approaches used to calculate (U–Th–Sm)/He
+    ages using in situ methods. In the first (absolute) approach, the
+    age is calculated from the measured concentrations of U, Th, (Sm)
+    and He using the following equation:
 
-<p></p>
+    <p></p>
 
-<a href="index.html"><tt>index.html</tt></a><br>
-<a href="help.html"><tt>help.html</tt></a><br>
-<a href="Resochronometer.js"><tt>Resochronometer.js</tt></a><br>
-<a href="math.min.js"><tt>math.min.js</tt></a><br>
-<a href="jquery-1.11.1.js"><tt>jquery-1.11.1.js</tt></a><br>
-<a href="jquery-ui-1.11.0.js"><tt>jquery-ui-1.11.0.js</tt></a><br>
-<a href="jquery.handsontable.full.js"><tt>jquery.handsontable.full.js</tt></a><br>
-<a href="jquery.handsontable.full.css"><tt>jquery.handsontable.full.css</tt></a><br>
+    <div style="text-align: center;">
+    He/V =
+    8 (137.88/138.88) (exp[&lambda;<sub>238</sub>t]-1) U +
+    7 (exp[&lambda;<sub>235</sub>t]-1) U /138.88 + <br>
+    <span style="margin-left: 50px;">
+    6 (exp[&lambda;<sub>232</sub>t]-1) Th +
+    0.1499 (exp[&lambda;<sub>147</sub>t]-1) Sm
+    </span>
+    <span style="float: right;">(1)</span>
+    </div>
+
+    <p></p>
+
+    where U, Th and Sm are expressed in mol &mu;m<sup>−3</sup> or
+    similar units, He is the molar abundance of helium released from
+    the ablation pit (in moles) and V is the ablation pit volume (in
+    &mu;m<sup>3</sup>). Alternately, the <i>pairwise</i> dating
+    approach can be used, where the concentrations and pit volumes are
+    normalized to a mineral standard of known (U–Th)/He age.
+
+    <p></p>
+
+    The measurements of U, Th, Sm and the ablation pit volume have
+    associated systematic errors. <tt>resochronometer</tt> groups these
+    into a single calibration factor, &kappa;:
+
+    <p></p>
+
+    <div style="text-align: center;">
+    &kappa; = (He/V) / {
+    8 (137.88/138.88) (exp[&lambda;<sub>238</sub>t]-1) U +
+    7 (exp[&lambda;<sub>235</sub>t]-1) U /138.88 + <br>
+    <span style="margin-left: 95px;">
+    6 (exp[&lambda;<sub>232</sub>t]-1) Th +
+    0.1499 (exp[&lambda;<sub>147</sub>t]-1) Sm }
+    </span>
+    <span style="float: right;">(2)</span>
+    </div>
+    
+    <p></p>
+
+    &kappa; is unknown but can be estimated by analyzing a standard of
+    known (U–Th–Sm)/He age. By measuring a series of standard zircon
+    and normalizing the sample measurements to those of the standards,
+    the age function can be solved and all uncertainties can be
+    accounted for.
+
+    <p></p>
+
+    You can run the calculator offline by unzipping the following archive
+    and opening <tt>index.html</tt> in your browser:
+
+    <p></p>
+
+    <div style="text-align: center;">
+      <a href="resochronometer.zip"><tt>resochronometer.zip</tt></a>
+    </div>
+
+  </body>
+</html>
